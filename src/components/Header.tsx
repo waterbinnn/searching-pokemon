@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { headerWrapper, title } from './Header.style';
+import { headerWrapper, title } from '../styles/components/Header.style';
 
 const Header = () => {
   return (

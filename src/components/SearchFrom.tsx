@@ -1,7 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import { formContainer, inputWrapper } from './SearchForm.style';
+import {
+  formContainer,
+  inputWrapper,
+} from '../styles/components/SearchForm.style';
 
-const SearchFrom = () => {
+const SearchForm = () => {
   return (
     <form css={formContainer}>
       <label htmlFor="pokemon">Poke-Id or Name</label>
@@ -13,4 +16,4 @@ const SearchFrom = () => {
   );
 };
 
-export default SearchFrom;
+export default SearchForm;

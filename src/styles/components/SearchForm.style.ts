@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { colors } from '../styles/theme';
+import { colors } from '../theme';
 
 export const formContainer = css`
   width: 100%;
@@ -29,3 +29,5 @@ export const inputWrapper = css`
     background-color: ${colors.primary};
   }
 `;
+
+
