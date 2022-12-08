@@ -1,9 +1,15 @@
-import React from 'react'
+/** @jsxImportSource @emotion/react */
+
+import { headerWrapper, title } from './Header.style';
 
 const Header = () => {
   return (
-    <div>Header</div>
-  )
-}
+    <header>
+      <div css={headerWrapper}>
+        <h1 css={title}>SEARCH YOUR POKEMON</h1>
+      </div>
+    </header>
+  );
+};
 
-export default Header
+export default Header;
