@@ -24,8 +24,8 @@ const pokeSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchPokemon.pending, (state) => {
-      state.isLoading = true;
+    builder.addCase(fetchPokemon.pending, (state, { payload }) => {
+      return { ...state, pokemon: payload, isLoading: true };
     });
     builder.addCase(fetchPokemon.fulfilled, (state, { payload }) => {
       return { ...state, pokemon: payload, isLoading: false };
