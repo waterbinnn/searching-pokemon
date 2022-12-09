@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { fetchPokemon } from '../redux/pokeSlice';
@@ -16,6 +16,7 @@ type SearchFormType = {
 
 const SearchForm = (props: SearchFormType) => {
   const { inputValue, setInputValue, setIsSearched } = props;
+
   const dispatch = useDispatch<AppDispatch>();
   const inputRef = useRef<HTMLInputElement>(null!);
 
@@ -44,6 +45,7 @@ const SearchForm = (props: SearchFormType) => {
           value={inputValue}
           onChange={handleInput}
           ref={inputRef}
+          required
         />
         <button type="submit">🔍</button>
       </div>
