@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { AsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const pokeApi = 'https://pokeapi.co/api/v2/pokemon/';
@@ -17,7 +16,6 @@ export const fetchPokemon = createAsyncThunk(
 );
 
 const initialState = {
-  term: '',
   isLoading: false,
 };
 
