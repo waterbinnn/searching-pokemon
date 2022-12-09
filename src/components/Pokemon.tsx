@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import PokemonCard from './PokemonCard';
 import HistoryItem from './HistoryItem';
-import SearchForm from './SearchFrom';
+import SearchForm from './SearchForm';
 
 import { main } from '../styles/components/Pokemon.style';
 import {
