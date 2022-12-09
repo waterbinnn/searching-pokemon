@@ -12,8 +12,8 @@ export const pokeContainer = css`
 
 export const pokeWrapper = css`
   position: relative;
-  width: 300px;
-  height: 400px;
+  width: 250px;
+  height: 320px;
   padding: 20px;
   border-radius: 8px;
   background-color: ${colors.primary};
@@ -24,16 +24,18 @@ export const pokeId = css`
   display: block;
   font-size: 15px;
   margin-bottom: 6px;
+  color: ${colors.secondary};
 `;
 
 export const pokeName = css`
   font-size: 20px;
+  font-weight: 700;
+  color: ${colors.secondary};
 `;
 
 export const pokeImg = css`
   display: block;
-  margin: 44px auto;
-  transform: scale(1.3);
+  margin: -20px auto;
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -42,11 +44,12 @@ export const pokeImg = css`
 export const pokeInfo = css`
   position: absolute;
   left: 20px;
-  bottom: -20px;
+  bottom: -30px;
   margin: 20px 0 0;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 300;
   text-align: left;
+  color: ${colors.gray};
 
   tbody {
     height: 120px;
