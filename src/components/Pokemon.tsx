@@ -1,19 +1,27 @@
 /** @jsxImportSource @emotion/react */
-import { main } from '../styles/components/Pokemon.style';
-
+import { useState } from 'react';
 import PokemonCard from './PokemonCard';
 import HistoryItem from './HistoryItem';
 import SearchForm from './SearchFrom';
+
+import { main } from '../styles/components/Pokemon.style';
 import {
   historyContainer,
   historyWrapper,
 } from '../styles/components/History.style';
 
 const Pokemon = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [isSearched, setIsSearched] = useState(false);
+
   return (
     <main css={main}>
-      <SearchForm />
-      <PokemonCard />
+      <SearchForm
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        setIsSearched={setIsSearched}
+      />
+      {isSearched ? <PokemonCard /> : null}
 
       <section css={historyContainer}>
         <h2>search history</h2>
