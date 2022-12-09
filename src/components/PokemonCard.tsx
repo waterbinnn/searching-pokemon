@@ -1,4 +1,7 @@
 /** @jsxImportSource @emotion/react */
+import { useSelector } from 'react-redux';
+import { getData } from '../redux/pokeSlice';
+import ErrorMsg from './ErrorMsg';
 
 import {
   pokeId,
@@ -8,9 +11,6 @@ import {
   pokeContainer,
   pokeInfo,
 } from '../styles/components/Pokemon.style';
-import { useSelector } from 'react-redux';
-import { getData } from '../redux/pokeSlice';
-import ErrorMsg from './ErrorMsg';
 
 const PokemonCard = () => {
   const data = useSelector(getData);
