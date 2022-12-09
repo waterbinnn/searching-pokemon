@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { fetchPokemon } from '../redux/pokeSlice';
@@ -8,9 +8,16 @@ import {
   inputWrapper,
 } from '../styles/components/SearchForm.style';
 
-const SearchForm = () => {
-  const [inputValue, setInputValue] = useState('');
+type SearchFormType = {
+  inputValue: string | number;
+  setInputValue: React.Dispatch<React.SetStateAction<string>>;
+  setIsSearched: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const SearchForm = (props: SearchFormType) => {
+  const { inputValue, setInputValue, setIsSearched } = props;
   const dispatch = useDispatch<AppDispatch>();
+  const inputRef = useRef<HTMLInputElement>(null!);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -19,8 +26,13 @@ const SearchForm = () => {
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     dispatch(fetchPokemon(inputValue));
+    setIsSearched(true);
     setInputValue('');
   };
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   return (
     <form css={formContainer} onSubmit={handleSubmit}>
@@ -31,6 +43,7 @@ const SearchForm = () => {
           id="pokemon"
           value={inputValue}
           onChange={handleInput}
+          ref={inputRef}
         />
         <button type="submit">🔍</button>
       </div>
