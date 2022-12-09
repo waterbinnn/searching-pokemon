@@ -8,6 +8,7 @@ export const searching = css`
   justify-content: center;
   align-items: center;
   margin: 50px auto;
+  animation: closeSearching 5000ms;
 
   img {
     width: 50px;
@@ -33,12 +34,23 @@ export const searching = css`
       transform: translate3d(2px, 5px, -10px);
     }
   }
+
+  @keyframes closeSearching {
+    80% {
+      opacity: 100;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
 `;
 
 export const errorMsg = css`
   margin: 50px auto;
   color: ${colors.error};
   font-weight: 700;
+  animation: showError 1500ms;
 
   img {
     display: block;
@@ -48,5 +60,15 @@ export const errorMsg = css`
 
   strong {
     display: inline-block;
+  }
+
+  @keyframes showError {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 100;
+    }
   }
 `;
