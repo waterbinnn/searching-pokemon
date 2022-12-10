@@ -1,5 +1,9 @@
 # freed-test
 
+## deploy
+
+https://searching-pokemon.netlify.app/
+
 ## Stack
 
 TypeScript, React, Redux-toolkit, Emotion
