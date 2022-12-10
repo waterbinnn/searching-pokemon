@@ -38,13 +38,13 @@ const Pokemon = () => {
       image: data.sprites['front_default'],
     };
     dispatch(addHistory(historyItem));
-  }, [data]);
+  }, [data, dispatch]);
 
   useEffect(() => {
     if (data) {
       getHistory();
     }
-  }, [data]);
+  }, [data, getHistory]);
 
   return (
     <main css={main}>
