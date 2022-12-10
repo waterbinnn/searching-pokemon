@@ -1,8 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import PokemonCard from './PokemonCard';
 import HistoryItem from './HistoryItem';
 import SearchForm from './SearchForm';
+
+import { addHistory, getData } from '../redux/pokeSlice';
 
 import { main } from '../styles/components/Pokemon.style';
 import {
@@ -10,9 +14,37 @@ import {
   historyWrapper,
 } from '../styles/components/History.style';
 
+interface StateType {
+  pokemon: {
+    historyList: [];
+  };
+}
+
 const Pokemon = () => {
+  const dispatch = useDispatch();
+
   const [inputValue, setInputValue] = useState('');
   const [isSearched, setIsSearched] = useState(false);
+
+  const data = useSelector(getData);
+  const historyList = useSelector(
+    (state: StateType) => state.pokemon.historyList
+  );
+
+  const getHistory = useCallback(() => {
+    let historyItem = {
+      id: data.id,
+      name: data.name,
+      image: data.sprites['front_default'],
+    };
+    dispatch(addHistory(historyItem));
+  }, [data]);
+
+  useEffect(() => {
+    if (data) {
+      getHistory();
+    }
+  }, [data]);
 
   return (
     <main css={main}>
@@ -23,13 +55,16 @@ const Pokemon = () => {
       />
       {isSearched ? <PokemonCard /> : null}
 
-      <section css={historyContainer}>
-        <h2>search history</h2>
-        <ol css={historyWrapper}>
-          <HistoryItem />
-          <HistoryItem />
-        </ol>
-      </section>
+      {historyList.length === 0 ? null : (
+        <section css={historyContainer}>
+          <h2>History</h2>
+          <ol css={historyWrapper}>
+            {historyList.map((item, key) => (
+              <HistoryItem item={item} key={key} />
+            ))}
+          </ol>
+        </section>
+      )}
     </main>
   );
 };

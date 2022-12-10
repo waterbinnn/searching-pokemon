@@ -1,17 +1,33 @@
 /** @jsxImportSource @emotion/react */
 
+import { useDispatch } from 'react-redux';
+import { deleteHistory } from '../redux/pokeSlice';
 import { historyLi } from '../styles/components/History.style';
 
-const HistoryItem = () => {
+type HistoryItemType = {
+  item: {
+    id: number;
+    name: string;
+    image: string;
+  };
+};
+
+const HistoryItem = (props: HistoryItemType) => {
+  const { item } = props;
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(deleteHistory(item.id));
+  };
+
   return (
-    <li css={historyLi}>
-      <img
-        src="https://cdn.cnn.com/cnnnext/dam/assets/210226041521-03-pokemon-anniversary-design-full-169.jpg"
-        alt=""
-      />
-      <span>#1</span>
-      <strong>Name</strong>
-      <button type="button">✕</button>
+    <li css={historyLi} key={item.id}>
+      <img src={item.image} alt="" />
+      <span>#{item.id}</span>
+      <strong>{item.name}</strong>
+      <button type="button" onClick={handleDelete}>
+        ✕
+      </button>
     </li>
   );
 };
