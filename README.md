@@ -1,4 +1,4 @@
-# freed-test
+# Searching pokemon
 
 ## deploy
 
@@ -18,8 +18,6 @@ TypeScript, React, Redux-toolkit, Emotion
   Redux-toolkit 의 extraReducers 를 사용하여 pending, fulfilled, rejected state를 관리하였습니다.
   결과가 없는 input 을 입력했을 경우, setInterval 로 4초동안 로딩중(Searching...) 화면을 띄워준 후 count 가 4초가 되었을 때 에러 화면을 보여주도록 작성하였습니다.
 
-**[추가한 기능]**
-
 - 검색 히스토리 <br>
   리듀서를 사용하여 구현하였습니다.
   검색 시 검색 히스토리가 남고, 삭제 버튼을 클릭하면 삭제됩니다.
@@ -28,7 +26,6 @@ TypeScript, React, Redux-toolkit, Emotion
 ## Folder Tree
 
 ```
-📦 FREED-TEST
  ┣ 📂src
  ┃ ┣ 📂 assets
  ┃ ┣ 📂 components
